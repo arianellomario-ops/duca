@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import Image from "next/image";
 
 import { FaWhatsapp } from "react-icons/fa";
@@ -153,8 +153,7 @@ export default function Home() {
       localStorage.setItem("theme", isDark ? "dark" : "light");
     };
 
-    useEffect(() => {
-      console.log("mostrarFormulario:", mostrarFormulario);
+    useLayoutEffect(() => {
       if (mostrarFormulario && !yaScrolleado.current) {
         formularioRef.current?.scrollIntoView({
           behavior: "smooth",
@@ -192,8 +191,8 @@ export default function Home() {
 
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
-            ? "bg-white/70 backdrop-blur-lg border-b border-border shadow-sm"
-            : "bg-transparent"
+          ? "bg-white/70 backdrop-blur-lg border-b border-border shadow-sm"
+          : "bg-transparent"
           }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
@@ -715,8 +714,14 @@ export default function Home() {
                 onClick={() => {
                   setForm({ nombre: "", email: "", mensaje: "" });
                   setEstado("idle");
-                  yaScrolleado.current = false;
                   setMostrarFormulario(true);
+
+                  requestAnimationFrame(() => {
+                    document.getElementById("formulario")?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                  });
                 }}
                 className="bg-primary text-white px-8 py-4 rounded-xl text-lg font-medium hover:scale-105 transition"
               >
@@ -759,17 +764,14 @@ export default function Home() {
               <button
                 type="button"
                 onClick={() => {
-                  console.log("click cerrar");
                   setMostrarFormulario(false);
-                  yaScrolleado.current = false;
 
-                  setTimeout(() => {
-                    const seccion = document.getElementById("contacto");
-                    seccion?.scrollIntoView({
+                  requestAnimationFrame(() => {
+                    document.getElementById("contacto")?.scrollIntoView({
                       behavior: "smooth",
                       block: "start",
                     });
-                  }, 50);
+                  });
                 }}
                 className="bg-white/60 backdrop-blur-md 
              rounded-full p-1.5
