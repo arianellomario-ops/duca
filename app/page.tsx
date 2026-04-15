@@ -181,95 +181,68 @@ export default function Home() {
   };
 
   return (
-    <main className="pt-24 min-h-screen bg-bg text-text overflow-visible relative">
+    <main className="pt-20 sm:pt-24 min-h-screen bg-bg text-text overflow-hidden relative">
+
       {/* BACKGROUND GLOW */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute w-[500px] h-[500px] bg-primary/10 blur-3xl rounded-full top-[-100px] left-[-100px]" />
-        <div className="absolute w-[400px] h-[400px] bg-secondary/10 blur-3xl rounded-full bottom-[-100px] right-[-100px]" />
+        <div className="absolute w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] bg-primary/10 opacity-50 sm:opacity-100 blur-3xl rounded-full top-[-80px] sm:top-[-100px] left-[-80px] sm:left-[-100px]" />
+
+        <div className="absolute w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] bg-secondary/10 opacity-50 sm:opacity-100 blur-3xl rounded-full bottom-[-80px] sm:bottom-[-100px] right-[-80px] sm:right-[-100px]" />
       </div>
 
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
-          ? "bg-white/70 backdrop-blur-lg border-b border-border shadow-sm"
-          : "bg-transparent"
+            ? "bg-white/70 backdrop-blur-lg border-b border-border shadow-sm"
+            : "bg-transparent"
           }`}
-
-      >{/* NAVBAR */}
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-10 py-4">
+      >
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
 
           {/* LOGO */}
-          <div className="flex items-center gap-3">
-          {/* <Image src="/logo.png" alt="DUCA logo" width={40} height={40} />*/}
-            <span className="font-semibold text-3xl leading-tight text-text">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <span className="font-semibold text-xl sm:text-2xl md:text-3xl leading-tight text-text">
               DUCA
             </span>
-            <span className="text-sm text-gray-500 block">
-              Estudio Contable e Impositivo.<br /><i>De Natalia Dutra Casero.</i>
+
+            {/* oculto en mobile */}
+            <span className="hidden sm:block text-xs sm:text-sm text-gray-500 leading-tight">
+              Estudio Contable e Impositivo.<br />
+              <i>De Natalia Dutra Casero.</i>
             </span>
           </div>
 
           {/* MENU DESKTOP */}
-          <div className="hidden md:flex items-center gap-8 text-sm text-text">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8 text-sm text-text">
             <a href="#inicio" className="hover:text-primary transition">Inicio</a>
             <a href="#servicios" className="hover:text-primary transition">Servicios</a>
             <a href="#nosotros" className="hover:text-primary transition">Nosotros</a>
             <a href="#contacto" className="hover:text-primary transition">Contacto</a>
           </div>
-          <div className="hidden md:flex items-center gap-4 text-sm text-text">
-            {/* REDES SOCIALES */}
-            {/* TIKTOK */}
-            <a
-              href="https://tiktok.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center rounded-full border border-border bg-surface hover:bg-primary hover:text-white transition"
-            >
+
+          {/* REDES DESKTOP */}
+          <div className="hidden md:flex items-center gap-3 lg:gap-4 text-sm text-text">
+            <a className="w-9 h-9 lg:w-10 lg:h-10 flex items-center justify-center rounded-full border border-border bg-surface hover:bg-primary hover:text-white transition">
               <FaTiktok />
             </a>
-            {/* INSTAGRAM */}
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              className="w-10 h-10 flex items-center justify-center rounded-full border border-border bg-surface hover:bg-primary hover:text-white transition"
-            >
+            <a className="w-9 h-9 lg:w-10 lg:h-10 flex items-center justify-center rounded-full border border-border bg-surface hover:bg-primary hover:text-white transition">
               <FaInstagram />
             </a>
-            {/* FACEBOOK */}
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              className="w-10 h-10 flex items-center justify-center rounded-full border border-border bg-surface hover:bg-primary hover:text-white transition"
-            >
+            <a className="w-9 h-9 lg:w-10 lg:h-10 flex items-center justify-center rounded-full border border-border bg-surface hover:bg-primary hover:text-white transition">
               <FaFacebook />
             </a>
-            {/* LINKEDIN */}
-            <a
-              href="https://www.linkedin.com/in/eciduca/"
-              target="_blank"
-              className="w-10 h-10 flex items-center justify-center rounded-full border border-border bg-surface hover:bg-primary hover:text-white transition"
-            >
+            <a className="w-9 h-9 lg:w-10 lg:h-10 flex items-center justify-center rounded-full border border-border bg-surface hover:bg-primary hover:text-white transition">
               <FaLinkedin />
             </a>
-            {/* TOUTUBE */}
-            <a
-              href="https://www.youtube.com/@DucaECI"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center rounded-full border border-border bg-surface hover:bg-primary hover:text-white transition"
-            >
+            <a className="w-9 h-9 lg:w-10 lg:h-10 flex items-center justify-center rounded-full border border-border bg-surface hover:bg-primary hover:text-white transition">
               <FaYoutube />
             </a>
-            {/* THEME TOGGLE */}
-            {/* <ThemeToggle />*/}
           </div>
 
           {/* MOBILE */}
-          <div className="md:hidden flex items-center gap-4">
-            <ThemeToggle />
-
+          <div className="md:hidden flex items-center gap-3">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="text-2xl"
+              className="text-xl"
             >
               ☰
             </button>
@@ -278,7 +251,7 @@ export default function Home() {
 
         {/* MOBILE MENU */}
         {menuOpen && (
-          <div className="md:hidden bg-surface border-t border-border px-6 pb-6 flex flex-col gap-4 animate-fade-in">
+          <div className="md:hidden bg-surface border-t border-border px-4 pb-6 pt-4 flex flex-col gap-4 animate-fade-in">
             <a href="#inicio" onClick={() => setMenuOpen(false)}>Inicio</a>
             <a href="#servicios" onClick={() => setMenuOpen(false)}>Servicios</a>
             <a href="#nosotros" onClick={() => setMenuOpen(false)}>Nosotros</a>
@@ -288,44 +261,43 @@ export default function Home() {
       </nav>
 
       {/* HERO */}
-      <section id="inicio" className="relative px-6 pt-24 pb-16 md:pt-24 md:pb-32 text-center">
+      <section id="inicio" className="relative px-4 sm:px-6 lg:px-8 pt-20 pb-12 sm:pt-24 sm:pb-20 md:pb-32 text-center">
 
-        {/* CONTENIDO */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
 
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-6xl md:text-6xl font-bold leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-balance"
           >
             Contabilidad sin vueltas:
-            <span className="block text-primary">simple, rápida y económica.</span>
+            <span className="text-primary"> simple, rápida y económica.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-6 text-lg text-muted max-w-2xl mx-auto"
+            className="mt-4 sm:mt-6 text-base sm:text-lg text-muted max-w-2xl mx-auto leading-relaxed"
           >
             En DUCA gestionamos tus impuestos, trámites y contabilidad para que te enfoques en hacer crecer tu negocio.
           </motion.p>
 
           {/* CTA */}
-          <div className="mt-10 flex flex-col md:flex-row justify-center gap-4">
+          <div className="mt-8 sm:mt-10 flex flex-col md:flex-row justify-center items-center gap-3 sm:gap-4">
             <a
               href="#servicios"
-              /*className="border border-border px-8 py-4 rounded-xl text-lg hover:bg-surface transition"*/
-              className="bg-primary text-white px-8 py-4 rounded-xl text-lg font-medium hover:scale-105 transition"
+              className="bg-primary text-white px-6 md:px-8 py-3 md:py-4 rounded-xl text-base md:text-lg font-medium hover:scale-105 active:scale-95 transition"
             >
               Ver servicios
             </a>
           </div>
 
           {/* SOCIAL PROOF */}
-          <p className="mt-6 text-sm text-muted">
-            Tu confianza, <span className="font-semibold text-text"> nuestra responsabilidad. <br /></span>
-            Tu tranquilidad, <span className="font-semibold text-text"> nuestro compromiso.</span>
+          <p className="mt-6 text-sm text-muted px-4 sm:px-0">
+            Tu confianza, <span className="font-semibold text-text">nuestra responsabilidad.</span><br />
+            Tu tranquilidad, <span className="font-semibold text-text">nuestro compromiso.</span>
           </p>
+
         </div>
       </section>
 
